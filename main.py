@@ -1,4 +1,4 @@
-from itertools import combinations_with_replacement
+from itertools import product
 import enchant
 
 # define our spell-checking dictionary
@@ -10,50 +10,62 @@ letters = list("aoputcn")
 # necessary letter all words must contain
 center_letter = "n"
 
-# programmatically grab the vowels from the letter list
-possible_vowels = list("aeiouy")
-vowels = list()
-for v in possible_vowels:
-    if v in letters:
-        vowels.append(v)
-
-print("Found vowels: {}".format(vowels))
-
 print("Generating combinations...")
-c_4 = combinations_with_replacement(letters, 4)
-c_5 = combinations_with_replacement(letters, 5)
-c_6 = combinations_with_replacement(letters, 6)
-c_7 = combinations_with_replacement(letters, 7)
+# most of the words will be between 4 and 7 letters long
+c_4 = product(letters, repeat = 4)
+c_5 = product(letters, repeat = 5)
+c_6 = product(letters, repeat = 6)
+c_7 = product(letters, repeat = 7)
 
 all_words = []
 
 print("Analyzing generated pseudo-words...")
-# there are two conditions we know for sure:
-# 1. each word must contain the center letter
-# AND
-# 2. each word must contain at least one vowel. duh!
-# also note that words must be at least 4 letters long
+print("Target: four-letter words...")
 for c in c_4:
-    if center_letter in c and any(l in c for l in vowels):
-        all_words.append(c)
+    word = ''.join(c)
+    # print(word)
+    if center_letter in word and d.check(word):
+        all_words.append(word)
 
+print("Target: five-letter words...")
 for c in c_5:
-    if center_letter in c and any(l in c for l in vowels):
-        all_words.append(c)
+    word = ''.join(c)
+    # print(word)
+    if center_letter in word and d.check(word):
+        all_words.append(word)
 
+print("Target: six-letter words...")
 for c in c_6:
-    if center_letter in c and any(l in c for l in vowels):
-        all_words.append(c)
+    word = ''.join(c)
+    # print(word)
+    if center_letter in word and d.check(word):
+        all_words.append(word)
 
+print("Target: seven-letter words...")
 for c in c_7:
-    if center_letter in c and any(l in c for l in vowels):
-        all_words.append(c)
+    word = ''.join(c)
+    # print(word)
+    if center_letter in word and d.check(word):
+        all_words.append(word)
 
-print(all_words)
+print("Found {} words: {}".format(len(all_words), all_words))
 
-real_words = list()
-for word in all_words:
-    if d.check(word):
-        real_words.append(word)
+# Now let's check to see if we got the pandrome in our all_words list!
+pandromes = list()
+for w in all_words:
+    if all(c in w for c in letters):
+        print("Found pandrome: {}".format(w))
+        pandromes.append(w)
 
-print(real_words)
+# If we didn't find a pandrome, try a longer combination. After 7 letters, the
+# time it takes to generate the certesian product increases substantially
+if len(pandromes) == 0:
+    print("Pandrome is longer than 7 letters. Generating 8...")
+
+c_8 = product(letters, repeat = 8)
+for c in c_8:
+    word = ''.join(c)
+    # print(word)
+    if center_letter in word and d.check(word):
+        print("Found an 8-letter word: {}".format(word))
+        all_words.append(word)
