@@ -5,14 +5,11 @@ import time
 # define our spell-checking dictionary
 d = enchant.Dict("en_US")
 
-# read in the dictionary file
-d = open("/usr/share/dict/words", "r").read().splitlines()
-
 # letters from the game
-letters = list("aoputcn")
+letters = list("tliudeg")
 
 # necessary letter all words must contain
-center_letter = "n"
+center_letter = "g"
 
 all_words = []
 
@@ -23,7 +20,7 @@ while i <= 9:
     start = time.time()
     for c in product(letters, repeat = i):
         word = ''.join(c)
-        if center_letter in word and word in d: # d.check() adds a ton of computation time!
+        if center_letter in word and d.check(word): # d.check() adds a ton of computation time!
             all_words.append(word)
     stop = time.time()
     print("Analysis time: {}".format(stop - start))
