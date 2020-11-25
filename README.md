@@ -11,6 +11,6 @@ To double-check, the algorithm then verifies the solutions using `pyenchant`.
 
 2. Slow
 The slow algorithm uses two python libraries: `itertools` and `pyenchant`, and it's simple:
-1. Input a list of letters, specifying which letter is in the center (i.e., which letter must be in every word)
-2. Generate all possible combinations of the given letters, from lengths 4 to 9
-3. Filter all of the generated words using pyenchant
+- Input a list of letters, specifying which letter is in the center (i.e., which letter must be in every word)
+- Generate all possible combinations of the given letters, from lengths 4 to 9
+- Filter all of the generated words using pyenchant
