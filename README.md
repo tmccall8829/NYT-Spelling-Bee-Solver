@@ -14,3 +14,7 @@ The slow algorithm uses two python libraries: `itertools` and `pyenchant`, and i
 - Input a list of letters, specifying which letter is in the center (i.e., which letter must be in every word)
 - Generate all possible combinations of the given letters, from lengths 4 to 9
 - Filter all of the generated words using pyenchant
+
+Note that both options will include words that are not accepted solutions to the puzzle,
+because the NYT excludes many words from their solution sets. The algorithm is guaranteed
+to find all of the solutions, however. It just finds some extras, too.
