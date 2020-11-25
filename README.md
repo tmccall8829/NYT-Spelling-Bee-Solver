@@ -1,5 +1,5 @@
 # NYT-Spelling-Bee-Solver
-A short program that finds every possible solution to the daily NYT Spelling Bee puzzle.
+A short program that finds (almost) every possible solution to the daily NYT Spelling Bee puzzle.
 
 Note that neither method is guaranteed to find all possible solutions, due to
 the inconsistency of the various dictionaries available. The fast method often
