@@ -4,8 +4,11 @@ import enchant
 d = open("/usr/share/dict/words", "r").read().splitlines()
 d_verify = enchant.Dict("en_US")
 
-letters = list("tliudeg")
-center_letter = "g"
+print("Enter all of the prompts using lowercase letters.")
+print("Make sure to enter today's letters as a single string.")
+
+letters = input("What are today's letters? ")
+center_letter = input("What is the center letter? ")
 
 matches = list()
 

@@ -5,11 +5,11 @@ import time
 # define our spell-checking dictionary
 d = enchant.Dict("en_US")
 
-# letters from the game
-letters = list("tliudeg")
+print("Enter all of the prompts using lowercase letters.")
+print("Make sure to enter today's letters as a single string.")
 
-# necessary letter all words must contain
-center_letter = "g"
+letters = input("What are today's letters? ")
+center_letter = input("What is the center letter? ")
 
 all_words = []
 
