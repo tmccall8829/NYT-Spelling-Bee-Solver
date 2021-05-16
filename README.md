@@ -6,7 +6,7 @@ the inconsistency of the various dictionaries available. The fast method often
 includes a lot of words that won't be accepted by NYT. The slow method doesn't
 include as many false positives, but it also isn't guaranteed to find every word (dictionaries are surprisingly inconsistent!).
 
-There are two methods included:
+There are three methods included:
 ### 1. Fast (~ 0.5 seconds)
 The fast method uses the native text-based dictionary present on all Unix systems. The algorithm
 sifts through all of the words, filtering out words that:
@@ -32,3 +32,9 @@ dictionary used in the "fast" algorithm.
 
 #### Example output
 ![](slow_output.png)
+
+### 3. Random
+This file (`randomized.py`) creates randomly generated 7-letter sets, and then uses the fast method (above) to find the number of matches for each generated set. Then, the file creates a violin plot of the distributions.
+
+#### Example output
+![](method_3.png)
