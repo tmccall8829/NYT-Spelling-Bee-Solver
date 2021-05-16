@@ -28,7 +28,7 @@ This algorithm is slower than the fast algorithm, because the number of possible
 in this case is equal to `7^4 + 7^5 + 7^6 + 7^7 + 7^8 + 7^9`, or `47,078,808` (Note that I'm stopping at
 9-letter words, because it'd take forever to check the 10-letter words). A basic dictionary,
 on the other hand, contains far fewer words: there are only 235,886 words in the edition of the Merriam Webster
-dictionary used here.
+dictionary used in the "fast" algorithm.
 
 #### Example output
 ![](slow_output.png)
