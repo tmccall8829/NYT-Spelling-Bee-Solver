@@ -1,8 +1,10 @@
 import time
 
-def process_matches(letters, center_letter, verify_matches: bool = False) -> list:
+
+def process_matches(letters, center_letter, verify_matches: bool = False) -> list[str]:
     # use the built-in system dictionary on unix systems
-    d = open("/usr/share/dict/words", "r").read().splitlines()
+    # to simplify things, this has been saved in the root dir
+    d = open("words", "r").read().splitlines()
 
     matches = []
     for word in d:
@@ -16,6 +18,7 @@ def process_matches(letters, center_letter, verify_matches: bool = False) -> lis
 
     if verify_matches:
         import enchant
+
         d_verify = enchant.Dict("en_US")
         for word in matches:
             if not d_verify.check(word):
@@ -23,8 +26,9 @@ def process_matches(letters, center_letter, verify_matches: bool = False) -> lis
 
     return matches
 
+
 if __name__ == "__main__":
-    import time # we don't care about timing unless we're calling directly
+    import time  # we don't care about timing unless we're calling directly
 
     print("Enter all of the prompts using lowercase letters.")
     print("Make sure to enter today's letters as a single string.")
@@ -42,6 +46,6 @@ if __name__ == "__main__":
     start = time.time()
 
     matches = process_matches(letters=letters, center_letter=center_letter)
-    
+
     print(matches)
     print(f"{len(matches)} matches in {time.time() - start}")
